@@ -9,10 +9,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Day1 {
     public void run() throws IOException {
+        //Variables
         FileImporter myFileImporter = new FileImporter();
         List<Integer> ElveList = new ArrayList<>();
         AtomicInteger intCalories = new AtomicInteger();
 
+        //read file content and do magic
         myFileImporter.readFile("Day1.txt").forEach(s -> {
 
             if (!s.isEmpty()) {
