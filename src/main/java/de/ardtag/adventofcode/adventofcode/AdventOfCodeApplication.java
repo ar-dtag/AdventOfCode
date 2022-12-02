@@ -12,6 +12,7 @@ public class AdventOfCodeApplication {
     public static void main(String[] args) throws IOException {
         SpringApplication.run(AdventOfCodeApplication.class, args);
 
+        //new Day1().run();
         new Day1().run();
 
     }
