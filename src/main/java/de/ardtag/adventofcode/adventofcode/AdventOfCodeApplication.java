@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
+import java.net.URL;
 
 @SpringBootApplication
 public class AdventOfCodeApplication {
@@ -19,6 +20,8 @@ public class AdventOfCodeApplication {
         //Day2
         //new Day2Part1().run();
         new Day2Part2().run();
+
+
 
     }
 

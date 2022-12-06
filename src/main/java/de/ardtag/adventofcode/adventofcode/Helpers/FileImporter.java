@@ -18,7 +18,7 @@ public class FileImporter {
         String strPath = "C:/Users/A302772/IdeaProjects/AdventOfCode/src/main/resources/";
 
         try {
-            bufferedReader = new BufferedReader(new FileReader(strPath+fileName));
+            bufferedReader = new BufferedReader(new FileReader(getResourcePath(fileName)));
 
             String line = bufferedReader.readLine();
 
@@ -33,6 +33,11 @@ public class FileImporter {
         }
         return stringList;
 
+    }
+
+    private String getResourcePath(String fileName){
+        URL resource = getClass().getClassLoader().getResource(fileName);
+        return resource.toString();
     }
 
 }
