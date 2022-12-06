@@ -36,8 +36,9 @@ public class FileImporter {
     }
 
     private String getResourcePath(String fileName){
-        URL resource = getClass().getClassLoader().getResource(fileName);
-        return resource.toString();
+
+
+        return System.getProperty("user.dir").toString() +"\\src\\main\\resources\\"+fileName;
     }
 
 }
