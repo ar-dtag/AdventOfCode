@@ -33,7 +33,6 @@ public class Day2Part2 {
 
         //Variables
         FileImporter myFileImporter = new FileImporter();
-        List<Integer> ElveList = new ArrayList<>();
         AtomicInteger intMyPoints = new AtomicInteger();
 
         intMyPoints.set(0);
