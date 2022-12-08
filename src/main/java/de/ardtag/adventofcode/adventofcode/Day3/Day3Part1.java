@@ -4,6 +4,7 @@ import de.ardtag.adventofcode.adventofcode.Helpers.FileImporter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -22,7 +23,21 @@ public class Day3Part1 {
         //Variables
         FileImporter myFileImporter = new FileImporter();
         List<Integer> ElveList = new ArrayList<>();
-        AtomicInteger intMyPoints = new AtomicInteger();
+        AtomicInteger intSumPrio = new AtomicInteger();
+        List<Character> charsList = new ArrayList<>();
+        List<Character> charsListFinal = new ArrayList<>();
+
+        final HashMap<Character,Integer> priorityHashMap = new HashMap<Character, Integer>();
+
+        //fill PrioHashMap
+        char ch;
+        int intPrio = 1;
+        for(ch = 'a'; ch <= 'z'; ++ch){
+            priorityHashMap.put(ch,intPrio++);
+        }
+        for(ch = 'A'; ch <= 'Z'; ++ch){
+            priorityHashMap.put(ch,intPrio++);
+        }
 
         //read file content and do magic
         myFileImporter.readFile("Day3.txt").forEach(line -> {
@@ -30,16 +45,43 @@ public class Day3Part1 {
             int intTimAfter = (line.length()/2);
             System.out.println("Split after : " + intTimAfter);
 
+
             //Split
-            String strLeft = line.substring(0, intTimAfter);
-            String strRight = line.substring(intTimAfter,line.length());
+            String left = line.substring(0, intTimAfter);
+            String right = line.substring(intTimAfter);
 
-            System.out.print("left is : " + strLeft + " ");
-            System.out.println("right is : " + strRight);
+            System.out.print("left is : " + left + " ");
+            System.out.println("right is : " + right);
 
 
+            //find charachters which appears in each side.
+            // compare each chat from left with each other in the right side.
+            for (int i = 0; i < left.toCharArray().length; i++) {
+
+                for (int ii = 0; ii < right.toCharArray().length; ii++) {
+                    if (right.charAt(ii) == left.charAt(i) ){
+                        if (!charsList.contains(left.charAt(i)))
+                            charsList.add(left.charAt(i));
+                        System.out.println(left.charAt(i));
+                    }
+
+                }
+            }
+
+            charsListFinal.addAll(charsList);
+            charsList.clear();
 
         });
+
+
+
+        //Calculate priorities
+        charsListFinal.forEach(character -> {
+            intSumPrio.addAndGet(priorityHashMap.get(character));
+        });
+
+        System.out.println("Final PrioSum is: " + intSumPrio);
+
 
     }
 }
