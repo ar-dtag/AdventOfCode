@@ -1,8 +1,9 @@
 package de.ardtag.adventofcode.adventofcode;
 
-import de.ardtag.adventofcode.adventofcode.Day2.Day2Part1;
-import de.ardtag.adventofcode.adventofcode.Day2.Day2Part2;
-import de.ardtag.adventofcode.adventofcode.Day3.Day3Part1;
+import de.ardtag.adventofcode.adventofcode.Day2.*;
+import de.ardtag.adventofcode.adventofcode.Day2.*;
+import de.ardtag.adventofcode.adventofcode.Day3.*;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -23,7 +24,8 @@ public class AdventOfCodeApplication {
         //new Day2Part2().run();
 
         //Day3
-        new Day3Part1().run();
+        //new Day3Part1().run();
+        new Day3Part2().run();
 
 
 
