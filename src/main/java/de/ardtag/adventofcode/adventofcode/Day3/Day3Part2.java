@@ -27,9 +27,9 @@ public class Day3Part2 {
         List<Character> charsList = new ArrayList<>();
         List<Character> charsListFinal = new ArrayList<>();
 
-        List<String> groupStrings = new ArrayList<>();
+
         List<String> backPackStringList = new ArrayList<>();
-        List<List<String>> backPackGroupList = new ArrayList<>();
+        List<String> backPackGroupList = new ArrayList<>();
 
         final HashMap<Character,Integer> priorityHashMap = new HashMap<Character, Integer>();
 
@@ -46,22 +46,50 @@ public class Day3Part2 {
         //read file content and do magic
         myFileImporter.readFile("Day3.txt").forEach(line -> {
             backPackStringList.add(line);
-
         });
 
         AtomicInteger intCounter = new AtomicInteger();
+        final StringBuilder groupStrings = new StringBuilder();
 
         backPackStringList.forEach(line ->{
+
             if (intCounter.getAndIncrement() < 3){
-                groupStrings.add(line);
+                groupStrings.append(line);
             }
             else {
                 //add groupStrings without reference to backPackGroupList
-                backPackGroupList.add(new ArrayList<>(groupStrings));
-                groupStrings.clear();
+                backPackGroupList.add(new String(groupStrings));
+                groupStrings.setLength(0);
                 intCounter.set(0);
             }
         });
+
+        //find char that are trippled in each group string
+
+        backPackGroupList.forEach(groupitems -> {
+            List<bla> charHashMap = new ArrayList<>();
+            //fill HashMap
+            char lochalchar;
+            int localintPrio = 1;
+            for(lochalchar = 'a'; lochalchar <= 'z'; ++lochalchar){
+                charHashMap.add(new bla(lochalchar,0));
+            }
+            for(lochalchar = 'A'; lochalchar <= 'Z'; ++lochalchar){
+                charHashMap.add(new bla(lochalchar,0));
+            }
+
+            for(int it = 0; it < groupitems.length(); it++){
+                char chr = groupitems.charAt(it);
+
+                //charHashMap.computeIfPresent(chr,(character, value) -> value++ );
+                if (charHashMap.equals(chr)){
+                    System.out.println(
+                            charHashMap.get(chr)
+                    );
+                }
+            }
+        });
+
 
 
 
@@ -77,6 +105,25 @@ public class Day3Part2 {
 
     }
 
+    private class bla{
+        char aChar;
+        Integer intValue;
+
+
+        public bla(char aChar, Integer intValue) {
+            this.aChar = aChar;
+            this.intValue = intValue;
+        }
+
+        public char getaChar() {
+            return aChar;
+        }
+
+        public void setaChar(char aChar) {
+            this.aChar = aChar;
+        }
+    }
+/*
     private void findDuplicate( String left, String right){
         //find charachters which appears in each side.
         // compare each chat from left with each other in the right side.
@@ -92,4 +139,6 @@ public class Day3Part2 {
             }
         }
     }
+
+ */
 }
