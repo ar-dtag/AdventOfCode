@@ -38,7 +38,12 @@ public class FileImporter {
     private String getResourcePath(String fileName){
 
 
-        return System.getProperty("user.dir").toString() +"\\src\\main\\resources\\"+fileName;
+        return System.getProperty("user.dir").toString()
+                + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "resources" +  File.separator
+                + fileName;
     }
 
 }
